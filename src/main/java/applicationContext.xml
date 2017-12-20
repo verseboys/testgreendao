@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"  
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+<!-- 定义dbcp数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 编码转换一定要，不然搜索里面传入的中文值，会显示中文乱码，导致无法搜索到内容 ,正确的写法 -->
+		<!-- 指定JDBc驱动 -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/testgreedao?useUnicode=true&amp;characterEncoding=UTF-8">
+		</property>
+		<!-- 提供链接数据库的用户名和密码 -->
+		<property name="username" value="root">
+		</property>
+		<property name="password" value="">
+		</property>
+	</bean>
+
+
+	<!-- sessionFactory bean定义 该方法没有注解功能 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 第一种方法 -->
+		<!-- 为AnnotationSessionFactoryBean注入定义好的数据源 -->
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<!-- 添加Hibernate配置参数 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- <prop key="javax.persistence.validation.mode">none</prop> -->
+			</props>
+		</property>
+		<!-- 添加对象关系映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/testgreendao/test/pojo/Father.hbm.xml</value>
+				<value>com/testgreendao/test/pojo/Son.hbm.xml</value>
+			</list>
+		</property>
+
+		<!-- 第二种方法 直接读取 -->
+		<!-- <property name="configLocation"> <value>classpath:hibernate.cfg.xml</value> 
+			</property> -->
+	</bean>
+
+
+
+
+
+<!-- 	 <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	 -->
+	<!--  注解-->
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	
+
+    <!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->   
+    <context:component-scan base-package="com.testgreendao.test" />  
+	
+	
+	
+	
+	<bean id="FatherDAO" class="com.testgreendao.test.pojo.FatherDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<!-- <bean id="SonDAO" class="com.testgreendao.test.pojo.SonDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean> -->
+	
+	</beans>
