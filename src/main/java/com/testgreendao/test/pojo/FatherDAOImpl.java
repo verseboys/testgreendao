@@ -3,8 +3,10 @@ package com.testgreendao.test.pojo;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.LockMode;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
@@ -20,8 +22,8 @@ import org.springframework.stereotype.Repository;
  * @see com.testgreendao.test.pojo.Father
  * @author MyEclipse Persistence Tools
  */
-@Repository("FatherDAO")
-public class FatherDAOImpl extends HibernateDaoSupport implements FatherDAO{
+@Repository
+public class FatherDAOImpl extends HibernateDaoSupport {
 	private static final Logger log = LoggerFactory.getLogger(FatherDAOImpl.class);
 	// property constants
 	public static final String FATHER_NAME = "fatherName";
@@ -31,6 +33,18 @@ public class FatherDAOImpl extends HibernateDaoSupport implements FatherDAO{
 	protected void initDao() {
 		// do nothing
 	}
+	
+	/**
+	 * 必须增加这一配置
+	 * @param sessionFactory
+	 */
+	 @Autowired 
+	    public void setSessionFactoryOverride(SessionFactory sessionFactory)
+	    {   
+	      super.setSessionFactory(sessionFactory);   
+	    } 
+	
+	
 
 	public void save(Father transientInstance) {
 		log.debug("saving Father instance");

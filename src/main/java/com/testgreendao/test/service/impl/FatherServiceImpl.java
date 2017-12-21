@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.testgreendao.test.pojo.Father;
+import com.testgreendao.test.pojo.FatherDAO;
 import com.testgreendao.test.pojo.FatherDAOImpl;
 import com.testgreendao.test.service.FatherService;
 
