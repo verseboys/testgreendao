@@ -492,7 +492,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>3.3.2.GA</version>
+			<version>4.1.4.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
@@ -545,7 +545,7 @@
 			<artifactId>swarmcache</artifactId>
 			<version>1.0RC2</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
 			<version>3.4.0.GA</version>
@@ -554,16 +554,16 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-commons-annotations</artifactId>
 			<version>3.1.0.GA</version>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.4.0.GA</version>
+			<version>4.1.4.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>3.1.0.GA</version>
+			<version>4.2.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.persistence</groupId>

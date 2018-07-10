@@ -1,14 +1,14 @@
 package com.testgreendao.test.pojo;
 
 import java.util.List;
-import java.util.Set;
+
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -23,7 +23,7 @@ import org.springframework.stereotype.Repository;
  * @author MyEclipse Persistence Tools
  */
 @Repository
-public class FatherDAOImpl extends HibernateDaoSupport {
+public class FatherDAOImpl extends HibernateDaoSupport implements FatherDAO {
 	private static final Logger log = LoggerFactory.getLogger(FatherDAOImpl.class);
 	// property constants
 	public static final String FATHER_NAME = "fatherName";
@@ -141,6 +141,7 @@ public class FatherDAOImpl extends HibernateDaoSupport {
 		log.debug("attaching dirty Father instance");
 		try {
 			getHibernateTemplate().saveOrUpdate(instance);
+		
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);

@@ -16,7 +16,7 @@
             </column>
         </many-to-one>
         <property name="sonName" type="java.lang.String">
-            <column name="son_name" length="2" not-null="true">
+            <column name="son_name" length="20" not-null="true">
                 <comment>儿子名字</comment>
             </column>
         </property>
@@ -26,7 +26,7 @@
             </column>
         </property>
         <property name="sonPic" type="java.lang.String">
-            <column name="son_pic" length="2" not-null="true">
+            <column name="son_pic" length="20" not-null="true">
                 <comment>儿子头像</comment>
             </column>
         </property>

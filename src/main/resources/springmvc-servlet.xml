@@ -11,18 +11,11 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-
-
-	<!-- 注解方式 -->
+	<!-- 注解方式 --><!-- 扫描包所有的 -->
 	<mvc:annotation-driven />
-	<!-- 扫描包所有的 -->
 	<context:component-scan base-package="com.testgreendao.test" />
 	<context:component-scan base-package="com.testgreendao.test.pojo" />
 	<context:component-scan base-package="com.testgreendao.test.service" />
-
-
-
-
 
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
@@ -46,27 +39,7 @@
 			</list>
 		</property>
 	</bean>
-	<!-- 配置处理映射 HandleMapping -->
-	<!-- 注解后不需要配置 -->
-	<!-- <bean name="/index.action" class="com.mybatis.controller.IndexAction" 
-		/> -->
-
-	<!-- 配置处理映射 HandleMapping 非注释方法 -->
-	<!-- <bean name="/index.html" class="com.mybatis.controller.Indexcontroller" 
-		/> -->
-	<!-- 配置视图解析器 到/WEB-INF/jsp/index.jsp -->
-
-
-
-	<!-- 此处增加视图映射 -->
-
-
-
-
-
-
-
-
+	
 
 	<!-- 配置视图解析器 到/WEB-INF/jsp/index.jsp -->
 	<bean
@@ -113,10 +86,6 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
-
-
-
 
 
 	<bean id="messageAdapter"

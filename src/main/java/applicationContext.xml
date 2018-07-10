@@ -24,14 +24,14 @@
 		<!-- 提供链接数据库的用户名和密码 -->
 		<property name="username" value="root">
 		</property>
-		<property name="password" value="">
+		<property name="password" value="123456">
 		</property>
 	</bean>
 
 
 	<!-- sessionFactory bean定义 该方法没有注解功能 -->
 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<!-- 第一种方法 -->
 		<!-- 为AnnotationSessionFactoryBean注入定义好的数据源 -->
 		<property name="dataSource">
@@ -81,16 +81,16 @@
 	
 	
 	
-	 <bean id="FatherDAOImpl" class="com.testgreendao.test.pojo.FatherDAOImpl">
+	 <bean id="fatherDAO" class="com.testgreendao.test.pojo.FatherDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 	</bean> 
-	<!-- <bean id="SonDAO" class="com.testgreendao.test.pojo.SonDAO">
+	 <bean id="sonDAO" class="com.testgreendao.test.pojo.SonDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
-	</bean> -->
+	</bean> 
 	
 	
 	
@@ -101,5 +101,10 @@
             <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器） -->
             <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         </context:component-scan>
+        
+        
+        
+        	 
+	 <import resource="applicationContext-tx.xml" />
 	
 	</beans>

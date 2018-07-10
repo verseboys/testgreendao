@@ -11,7 +11,7 @@
             <generator class="identity" />
         </id>
         <property name="fatherName" type="java.lang.String">
-            <column name="father_name" length="2" not-null="true">
+            <column name="father_name" length="20" not-null="true">
                 <comment>父亲名字</comment>
             </column>
         </property>
@@ -21,7 +21,7 @@
             </column>
         </property>
         <property name="fatherPic" type="java.lang.String">
-            <column name="father_pic" length="2" not-null="true">
+            <column name="father_pic" length="20" not-null="true">
                 <comment>父亲头像</comment>
             </column>
         </property>

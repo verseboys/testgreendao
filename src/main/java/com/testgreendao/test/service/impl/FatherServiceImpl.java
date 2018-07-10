@@ -12,13 +12,13 @@ import com.testgreendao.test.service.FatherService;
 public class FatherServiceImpl implements FatherService{
 	
 	@Autowired
-	private  FatherDAOImpl fatherDAOImpl; 
+	private  FatherDAO fatherDAO; 
 	
 
 	@Override
 	public Father findById(Integer id) {
 		// TODO Auto-generated method stub
-		return fatherDAOImpl.findById(id);
+		return fatherDAO.findById(id);
 	}
 	
 
